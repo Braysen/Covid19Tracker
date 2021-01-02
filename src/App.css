@@ -28,6 +28,26 @@ body{
     justify-content: space-between;
 }
 
+.table{
+    margin-top: 20px;
+    overflow-y: scroll;
+    height: 400px;
+    color: #6a5d5d;
+}
+
+.table tr{
+    display: flex;
+    justify-content: space-between;
+}
+
+.table td{
+    padding: 0.5rem;
+}
+
+.table tr:nth-of-type(odd){
+    background-color: #f0f0f0;
+}
+
 @media (max-width: 990px){
     .app{
         flex-direction: column;
