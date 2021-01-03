@@ -1,29 +1,31 @@
-import React from 'react';
-import './App.css'
-import { useState, useEffect } from 'react';
+import React,{ useState, useEffect } from 'react';
+import { Card, CardContent } from '@material-ui/core';
+import { sortData } from './util';
 import Header from './components/header';
 import Map from './components/Map';
-import { Card, CardContent } from '@material-ui/core';
 import Table from './components/Table';
-import { sortData } from './util';
+import LineGraph from './components/LineGraph';
+import './App.css'
 
 function App() {
-  const [countries, setCountries] = useState([]);
-    const [country, setCountry] = useState("worlwide");
-    const [countryInfo, setCountryInfo] = useState({});
-    const [tableData, setTableData] = useState([]);
 
+  const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState("worlwide");
+  const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
+    /* https://disease.sh/v3/covid-19/all */
     useEffect(() => {
-      fetch('https://disease.sh/v3/covid-19/all')
+      fetch('')
       .then(response => response.json())
       .then(data => {
         setCountryInfo(data);
       })
     }, []);
 
+    /* https://disease.sh/v3/covid-19/countries */
     useEffect(() => {
         const getCountriesData = async () => {
-          await fetch("https://disease.sh/v3/covid-19/countries")
+          await fetch("")
           .then((response) => response.json())
           .then((data) => {
             const countries = data.map((country) => (
@@ -44,10 +46,14 @@ function App() {
     const onCountryChange = async (event) => {
         const countryCode = event.target.value;
 
+        /* 
+            https://disease.sh/v3/covid-19/all
+            https://disease.sh/v3/covid-19/countries/${countryCode}
+        */
         const url = 
           countryCode === 'Worldwide' 
-            ? 'https://disease.sh/v3/covid-19/all'
-            : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+            ? ''
+            : ``;
         
         await fetch(url)
         .then(response => response.json())
@@ -62,7 +68,6 @@ function App() {
     <div className="app">
       <div className="app__left">
         <Header onCountryChange={onCountryChange} country={country} countries={countries} countryInfo={countryInfo}></Header>
-
         <Map/>
       </div>
 
@@ -72,6 +77,7 @@ function App() {
           <Table countries={tableData}/>
           <h3>Worldwide new cases</h3>
           {/* Graph */}
+          <LineGraph/>
         </CardContent>
       </Card>
       

@@ -30,7 +30,7 @@ body{
 
 .table{
     margin-top: 20px;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 400px;
     color: #6a5d5d;
 }
