@@ -12,6 +12,15 @@ body{
     padding: 20px;
 }
 
+.app__dropdown{
+    background-color: white;
+}
+
+.app__header > h1{
+    color: #fc3c3c;
+    font-size: 2rem;
+}
+
 .app__header{
     display: flex;
     align-items: center;
@@ -26,6 +35,26 @@ body{
 .app__stats{
     display: flex;
     justify-content: space-between;
+}
+
+.app__right{
+    display: flex;
+    flex-direction: column;
+}
+
+.app__right .MuiCardContent-root{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.app__graph{
+    flex-grow: 1;
+}
+
+.app__graphTitle{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .table{
@@ -59,6 +88,71 @@ body{
 
 .map .leaflet-container{
     height: 100%;
+}
+
+.info-flag img{
+    width: 100px;
+    border-radius: 5px;
+}
+
+.info-name{
+    font-size: 15px;
+    font-weight: bold;
+    color: #555;
+    margin-top: 5px;
+}
+
+.info-flag{
+    height: 80px;
+    width: 100%;
+    background-size: cover;
+    border-radius: 8px;
+}
+
+.info-confirmed,
+.info-recovered,
+.info-deaths{
+    font-size: 13px;
+    margin-top: 1px;
+}
+
+.info-container{
+    width: 100px;
+    border-radius: 5px;
+}
+.infoBox{
+    flex: 1;
+    cursor: pointer;
+}
+
+.infoBox:not(:last-child){
+    margin-right: 15px;
+}
+
+.infoBox--selected{
+    border-top: 10px solid greenyellow;
+}
+
+.infoBox--red{
+    border-color: red;
+}
+
+.infoBox__cases--green{
+    color: #adff2f !important;
+}
+
+.infoBox__cases{
+    color: #cc1034;
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.infoBox__total{
+    color: #6c757d;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    margin-top: 15px !important;
 }
 
 @media (max-width: 990px){

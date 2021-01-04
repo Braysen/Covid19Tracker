@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2'
 import numeral from 'numeral'
-//Gaby finanzas
+
 const options = {
     legend:{
         display: false
@@ -65,7 +65,7 @@ const buildChartData = (data, casesType = "cases") => {
     return chartData;
 }
 
-function LineGraph({ casesType = 'cases' }) {
+function LineGraph({ casesType, ...props}) {
     const [data, setData] = useState({});
 
     useEffect(() => {
@@ -75,7 +75,7 @@ function LineGraph({ casesType = 'cases' }) {
                 return response.json();
             })
             .then((data) => {
-                let chartData = buildChartData(data,'cases');
+                let chartData = buildChartData(data,casesType);
                 setData(chartData);
                 
             });
@@ -87,7 +87,7 @@ function LineGraph({ casesType = 'cases' }) {
     
 
     return (
-        <div>
+        <div className={props.className}>
             {
                 data?.length > 0 && (
                     <Line

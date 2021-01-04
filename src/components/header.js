@@ -1,9 +1,9 @@
 import React from 'react'
 import { FormControl, Select, MenuItem } from '@material-ui/core'
-import InfoBox from './infoBox';
+/*import InfoBox from './infoBox';
+import { prettyPrintStat } from '../util';*/
 
-function Header({onCountryChange, country, countries, countryInfo}) {
-
+function Header({onCountryChange, country, countries}) {
     return (
       <>
         <div className="app__header">
@@ -11,9 +11,10 @@ function Header({onCountryChange, country, countries, countryInfo}) {
             <FormControl className="app__dropdown">
               <Select
                 variant="outlined"
+                value={country}
                 onChange={onCountryChange}
-                value={country}>
-                  <MenuItem value="Worldwide">Worldwide</MenuItem>
+                >
+                  <MenuItem value="worldwide">Worldwide</MenuItem>
                   {
                     countries.map((country) => (
                       <MenuItem key={country.code} value={country.value}>{country.name}</MenuItem>
@@ -22,12 +23,8 @@ function Header({onCountryChange, country, countries, countryInfo}) {
               </Select>
             </FormControl>
         </div>
-
-        <div className="app__stats">
-          <InfoBox title="Coronavirus Cases" cases= {countryInfo.todayCases} total={countryInfo.cases}/>
-          <InfoBox title="Recovered" cases= {countryInfo.todayRecovered} total={countryInfo.recovered}/>
-          <InfoBox title="Deaths" cases= {countryInfo.todayDeaths} total={countryInfo.deaths}/>
-        </div>
+        
+        
       </>
     )
 }
